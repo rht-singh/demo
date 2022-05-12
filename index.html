@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p class="data"></p>
+  </body>
+  <script>
+    let para = document.querySelector(".data");
+    fetch("https://apilms.quadbtech.com/api/v1/all_courses")
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data.data[0]);
+        data.data[0].Courses.map((item) => {
+          para.innerHTML = item.course_id;
+        });
+      });
+  </script>
+</html>
